@@ -6,15 +6,13 @@
 
 package com.github.techpavan.maven;
 
-import com.beust.jcommander.IStringConverter;
-import com.beust.jcommander.Parameter;
-import lombok.Data;
-import org.apache.commons.lang3.time.DateUtils;
-
 import java.text.ParseException;
 import java.util.List;
 
-@Data
+import com.beust.jcommander.IStringConverter;
+import com.beust.jcommander.Parameter;
+import org.apache.commons.lang3.time.DateUtils;
+
 public class ArgData {
 
     @Parameter(names = {"--path", "-p"}, description = "Path to m2 directory, if using a custom path.")
@@ -52,6 +50,102 @@ public class ArgData {
 
     @Parameter(names = {"--retainOld", "-ro"}, description = "Retain the artifacts even if old versions. Only process the configured inputs.")
     private boolean retainOld;
+
+    public String getM2Path() {
+        return m2Path;
+    }
+
+    public void setM2Path(String m2Path) {
+        this.m2Path = m2Path;
+    }
+
+    public Long getDownloadedBefore() {
+        return downloadedBefore;
+    }
+
+    public void setDownloadedBefore(Long downloadedBefore) {
+        this.downloadedBefore = downloadedBefore;
+    }
+
+    public Long getAccessedBefore() {
+        return accessedBefore;
+    }
+
+    public void setAccessedBefore(Long accessedBefore) {
+        this.accessedBefore = accessedBefore;
+    }
+
+    public List<String> getIgnoreArtifacts() {
+        return ignoreArtifacts;
+    }
+
+    public void setIgnoreArtifacts(List<String> ignoreArtifacts) {
+        this.ignoreArtifacts = ignoreArtifacts;
+    }
+
+    public List<String> getIgnoreGroups() {
+        return ignoreGroups;
+    }
+
+    public void setIgnoreGroups(List<String> ignoreGroups) {
+        this.ignoreGroups = ignoreGroups;
+    }
+
+    public boolean isDeleteAllSnapshots() {
+        return deleteAllSnapshots;
+    }
+
+    public void setDeleteAllSnapshots(boolean deleteAllSnapshots) {
+        this.deleteAllSnapshots = deleteAllSnapshots;
+    }
+
+    public boolean isDeleteSource() {
+        return deleteSource;
+    }
+
+    public void setDeleteSource(boolean deleteSource) {
+        this.deleteSource = deleteSource;
+    }
+
+    public boolean isDeleteJavadoc() {
+        return deleteJavadoc;
+    }
+
+    public void setDeleteJavadoc(boolean deleteJavadoc) {
+        this.deleteJavadoc = deleteJavadoc;
+    }
+
+    public List<String> getForceArtifacts() {
+        return forceArtifacts;
+    }
+
+    public void setForceArtifacts(List<String> forceArtifacts) {
+        this.forceArtifacts = forceArtifacts;
+    }
+
+    public List<String> getForceGroups() {
+        return forceGroups;
+    }
+
+    public void setForceGroups(List<String> forceGroups) {
+        this.forceGroups = forceGroups;
+    }
+
+    public boolean isDryRun() {
+        return dryRun;
+    }
+
+    public void setDryRun(boolean dryRun) {
+        this.dryRun = dryRun;
+    }
+
+    public boolean isRetainOld() {
+        return retainOld;
+    }
+
+    public void setRetainOld(boolean retainOld) {
+        this.retainOld = retainOld;
+    }
 
     static class DateToMillisConverter implements IStringConverter<Long> {
 

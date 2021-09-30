@@ -6,27 +6,34 @@
 
 package com.github.techpavan.maven;
 
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterException;
-import com.beust.jcommander.internal.Lists;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.maven.artifact.versioning.ComparableVersion;
+import static org.apache.commons.io.FilenameUtils.concat;
+import static org.apache.commons.lang3.StringUtils.defaultString;
+import static org.apache.commons.lang3.SystemUtils.USER_HOME;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import static org.apache.commons.io.FilenameUtils.concat;
-import static org.apache.commons.lang3.StringUtils.defaultString;
-import static org.apache.commons.lang3.SystemUtils.USER_HOME;
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
+import com.beust.jcommander.internal.Lists;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.maven.artifact.versioning.ComparableVersion;
 
-@Slf4j
 public class CleanM2 {
+    private static Logger log = Logger.getLogger(CleanM2.class.getCanonicalName());
     private static Map<DeleteReason, Set<File>> DELETE_MAP = new LinkedHashMap<>();
     private static Map<String, Set<FileInfo>> PROCESS_MAP = new HashMap<>();
     private static Map<SkipReason, Set<String>> SKIP_MAP = new HashMap<>();
@@ -79,7 +86,7 @@ public class CleanM2 {
         File m2Dir = new File(m2Path);
         File repoDir = new File(m2Path, "repository");
         if (!m2Dir.exists() || !repoDir.exists()) {
-            log.error("Valid Maven repository could not be found. Please provide a valid input.");
+            log.severe("Valid Maven repository could not be found. Please provide a valid input.");
             jCommander.usage();
             System.exit(1);
         }
