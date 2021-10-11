@@ -4,7 +4,7 @@
  * https://github.com/techpavan
  */
 
-package com.github.techpavan.maven;
+package com.steeplesoft.maven;
 
 import static org.apache.commons.io.FilenameUtils.concat;
 import static org.apache.commons.lang3.StringUtils.defaultString;

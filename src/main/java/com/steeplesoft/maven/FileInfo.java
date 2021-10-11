@@ -4,7 +4,7 @@
  * https://github.com/techpavan
  */
 
-package com.github.techpavan.maven;
+package com.steeplesoft.maven;
 
 import java.io.File;
 import java.util.Objects;

@@ -4,7 +4,7 @@
  * https://github.com/techpavan
  */
 
-package com.github.techpavan.maven;
+package com.steeplesoft.maven;
 
 import java.text.ParseException;
 import java.util.List;
@@ -29,13 +29,11 @@ public class ArgData {
     protected Long accessedBefore = 0L;
 
     @CommandLine.Option(names = {"--ignoreArtifacts", "-ia"},
-            description = "Comma separated list of groupId:artifactId combination to be ignored."
-            /*, converter = StringToListConverter.class*/)
+            description = "Comma separated list of groupId:artifactId combination to be ignored.")
     protected List<String> ignoreArtifacts;
 
     @CommandLine.Option(names = {"--ignoreGroups", "-ig"},
-            description = "Comma separated list of groupIds (full or part) to be ignored."
-            /*, converter = StringToListConverter.class*/)
+            description = "Comma separated list of groupIds (full or part) to be ignored.")
     protected List<String> ignoreGroups;
 
     @CommandLine.Option(names = {"--deleteAllSnapshots", "-dsn"},
@@ -51,13 +49,11 @@ public class ArgData {
     protected boolean deleteJavadoc;
 
     @CommandLine.Option(names = {"--forceArtifacts", "-fa"},
-            description = "Comma separated list of groupId:artifactId combination to be deleted."
-            /*, converter = StringToListConverter.class*/)
+            description = "Comma separated list of groupId:artifactId combination to be deleted.")
     protected List<String> forceArtifacts;
 
     @CommandLine.Option(names = {"--forceGroups", "-fg"},
-            description = "Comma separated list of groupIds (full or part) to be deleted."
-            /*, converter = StringToListConverter.class*/)
+            description = "Comma separated list of groupIds (full or part) to be deleted.")
     protected List<String> forceGroups;
 
     @CommandLine.Option(names = {"--dryrun", "-dr"},
